@@ -10,6 +10,11 @@ class OrderService {
 
     async updateDeliveryStatus(orderId,deliveryStatus){
         return await axios.patch(BASE_URL+"/"+orderId,deliveryStatus)
+        
+    }
+    async updateOrder(orderId,orderDetailsUpdateDto){
+        return await axios.put(BASE_URL+"/"+orderId,orderDetailsUpdateDto)
+        
     }
 
     async viewOrderById(orderId)

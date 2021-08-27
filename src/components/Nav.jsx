@@ -32,7 +32,7 @@ class Nav extends Component {
                 
                 </ul>
                 <div className="text-end">
-                    <a href="#" className="btn btn-outline-light me-2">Login</a>
+                    <NavLink className="btn btn-outline-light me-2" to="/signin">Login</NavLink>
                     <a href="#" className="btn btn-warning">Register</a>
                   </div>
               </div>

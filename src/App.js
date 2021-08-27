@@ -11,6 +11,8 @@ import ManageBooks from './components/ManageBooks';
 import ManageOrder from './components/order/ManageOrder';
 import PlaceOrder from './components/order/PlaceOrder';
 import UpdateOrder from './components/order/UpdateOrder';
+import Counter from './components/counter';
+
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
    <Route exact path="/admin/orders" component={ManageOrder}/>
    <Route exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
    <Route exact path="/book/:bookId/order" component={PlaceOrder}/>
+
+   <Route  path="/counter" component={Counter}/>
+
    
    <Route exact path="/" component={Home}/>
    
