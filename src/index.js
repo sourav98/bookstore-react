@@ -8,17 +8,25 @@ import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from './reducers/rootReducer';
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
-
-// Creating the store using reducer
-
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+// Persisting redux state changes
+const persistConfig = {
+  key: "root",
+  storage,
+};
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+// Creating store using reducer
 let store = createStore(
-  rootReducer,
+  persistedReducer,
   compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
-); 
+);
 
+// Enables persistence
+const persistor = persistStore(store);
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>

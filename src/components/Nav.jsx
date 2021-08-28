@@ -4,9 +4,9 @@ import { Link, withRouter } from 'react-router-dom';
 import { signOut } from '../actions/customerAction';
 import { useDispatch, useSelector } from "react-redux";
 const Nav = ({history}) => {
+
   const dispatch = useDispatch();
   const customer = useSelector((state) => state.customer);
-
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
@@ -32,18 +32,25 @@ const Nav = ({history}) => {
         
         </ul>
         <div className="text-end">
-          {customer.loggedIn ? (
-             <button className="btn btn-outline-light me-2" onClick={
-               () => 
-               {
-                dispatch(signOut(customer.email));
-                history.push("/")
-               }
-             }>Log Out</button>
-          ) : (
-            <NavLink className="btn btn-outline-light me-2" to="/signin">Login</NavLink>)
-            }
-            <a href="#" className="btn btn-warning">Register</a>
+          {!customer.loggedIn && (
+            <li>
+            <NavLink className="btn btn-outline-light me-2" to="/signin">Login</NavLink>
+            <NavLink to="/" className="btn btn-warning">Register</NavLink>
+            </li>
+          )}
+          {customer.loggedIn && (
+          <button className="btn btn-outline-light me-2" onClick={
+              () => 
+              {
+              dispatch(signOut(customer.email)).then((res) => {
+          
+            });
+              history.push("/")
+              }
+            }>Log Out</button>
+          )}
+         
+           
           </div>
       </div>
     </div>

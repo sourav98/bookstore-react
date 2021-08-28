@@ -14,7 +14,8 @@ import UpdateOrder from './components/order/UpdateOrder';
 import Books from './components/book/Books';
 import ManageBook from './components/book/ManageBook';
 import Signin from './components/user/Signin';
-import Signout from './components/user/Signout';
+import AdminRoute from './AdminRoute';
+import PrivateRoute from './PrivateRoute';
 
 
 
@@ -24,14 +25,16 @@ function App() {
       <Nav/>
     <Switch>
    <Route path="/books" component={Books}/>
-   <Route exact path="/admin" component={AdminDashboard}/>
-   <Route exact path="/admin/create/book" component={AddBook}/>
-   <Route exact path="/admin/books" component={ManageBook}/>
-   <Route exact path="/admin/orders" component={ManageOrder}/>
-   <Route exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
-   <Route exact path="/book/:bookId/order" component={PlaceOrder}/>
+
+   <AdminRoute exact path="/admin" component={AdminDashboard}/>
+   <AdminRoute exact path="/admin/create/book" component={AddBook}/>
+   <AdminRoute exact path="/admin/books" component={ManageBook}/>
+   <AdminRoute exact path="/admin/orders" component={ManageOrder}/>
+   <AdminRoute exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
+
+   <PrivateRoute exact path="/book/:bookId/order" component={PlaceOrder}/>
    <Route exact path="/signin" component={Signin}/>
-   {/* <Route exact path="/signout" component={Signout}/> */}
+ 
    <Route exact path="/" component={Home}/>
    
     </Switch>
