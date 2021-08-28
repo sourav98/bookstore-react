@@ -20,13 +20,13 @@ class ManageBooks extends Component {
           this.setState({ books });
         });
       };
-
+    
     render() { 
         return ( 
         
             <Base title="Manage Books"  className="container p-4"  description="Update and delete your books here">
            <Link to="/admin" className="rounded btn btn-md btn-info">Admin Home</Link>
-          
+      
 <table className="table table-bordered table-secondary mt-4">
   <thead>
     <tr>
@@ -54,6 +54,7 @@ class ManageBooks extends Component {
 ))}
    </tbody>
 </table>
+
 
        </Base>
          );

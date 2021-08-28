@@ -7,11 +7,15 @@ import Home from './components/Home';
 import Book from './components/Book';
 import AdminDashboard from './components/AdminDashboard';
 import AddBook from './components/AddBook';
-import ManageBooks from './components/ManageBooks';
+
 import ManageOrder from './components/order/ManageOrder';
 import PlaceOrder from './components/order/PlaceOrder';
 import UpdateOrder from './components/order/UpdateOrder';
-import Counter from './components/counter';
+import Books from './components/book/Books';
+import ManageBook from './components/book/ManageBook';
+import Signin from './components/user/Signin';
+import Signout from './components/user/Signout';
+
 
 
 function App() {
@@ -19,17 +23,15 @@ function App() {
     <div className="App">
       <Nav/>
     <Switch>
-   <Route path="/books" component={Book}/>
+   <Route path="/books" component={Books}/>
    <Route exact path="/admin" component={AdminDashboard}/>
    <Route exact path="/admin/create/book" component={AddBook}/>
-   <Route exact path="/admin/books" component={ManageBooks}/>
+   <Route exact path="/admin/books" component={ManageBook}/>
    <Route exact path="/admin/orders" component={ManageOrder}/>
    <Route exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
    <Route exact path="/book/:bookId/order" component={PlaceOrder}/>
-
-   <Route  path="/counter" component={Counter}/>
-
-   
+   <Route exact path="/signin" component={Signin}/>
+   {/* <Route exact path="/signout" component={Signout}/> */}
    <Route exact path="/" component={Home}/>
    
     </Switch>

@@ -15,7 +15,8 @@ class AddBook extends Component {
         price:"",
         stock:"",
         category:"",
-        categories:[]
+        categories:[],
+        imgUrl:""
        } 
       }
     
@@ -99,6 +100,16 @@ class AddBook extends Component {
           />
         </div>
      
+        <div className="form-group">
+      <label className="col-form-label-md mt-4" >Enter the Image Url</label>
+      <input
+            onChange={this.handleChange}
+            name="imgUrl"
+            className="form-control"
+            placeholder="Author"
+            value={this.state.book.imgUrl}
+          />
+      </div>
 
         <div className="form-group">
       <label className="col-form-label-md mt-4" >Enter the ISBN</label>

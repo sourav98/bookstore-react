@@ -12,6 +12,7 @@ class Card extends Component {
         {this.props.books.map((book) => (
       <div className="col">
       <div className="card text-dark bg-light">
+      <img class="card-img-top" style={{width:"417px",height:"270px"}} src={book.imgUrl} alt="Card image cap"/>
       <div className="card-header"><b>{book.title}</b></div>
      <div className="card-body">
      <h5 className="card-title"></h5>
