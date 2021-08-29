@@ -25,8 +25,14 @@ const ManageBook = () => {
      
         <Base title="Manage Books"  className="container p-4"  description="Update and delete your books here">
         <Link to="/admin" className="rounded btn btn-md btn-info">Admin Home</Link>
-   
-<table className="table table-bordered table-secondary mt-4">
+        <div className=" mt-4 card text-dark bg-light">
+           
+            <div className="card-header">
+              Book List
+              </div>
+            <div className="card-body">
+        
+            <table className="table  table-hover table-bordered table-striped  mt-4">
 <thead>
  <tr>
  <th scope="col">Book Id</th>
@@ -53,6 +59,14 @@ const ManageBook = () => {
 ))}
 </tbody>
 </table>
+
+
+        
+            </div>
+            <div className="card-footer">
+     
+            </div>
+            </div>
 
 
     </Base>

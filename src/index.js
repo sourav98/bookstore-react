@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { PersistGate } from 'redux-persist/integration/react';
 // Persisting redux state changes
 const persistConfig = {
   key: "root",
@@ -31,7 +32,9 @@ ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
       <Provider store={store}>
-    <App />
+        <PersistGate persistor={persistor}>
+         <App />
+    </PersistGate>
     </Provider>
     </BrowserRouter>
   </React.StrictMode>,

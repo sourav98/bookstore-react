@@ -39,4 +39,15 @@ export const signOut = (email) => async  (dispatch) =>
   
 }
 
+export const listAllCustomers = () => async  (dispatch) => 
+{
+    const result = await  axios.get("http://localhost:8081/customer/all")
+ 
+ dispatch({
+        type:"GET_ALL_CUSTOMERS",
+        payload:result.data
+    })
+  
+}
+
 

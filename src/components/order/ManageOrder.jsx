@@ -20,8 +20,15 @@ class ManageOrder extends Component {
         
             <Base title="Manage Orders"  className="container p-4"  description="Cancel and delete the orders here">
            <Link to="/admin" className="rounded btn btn-md btn-info">Admin Home</Link>
-           <div class="table-responsive-sm"> 
-<table className="table table-bordered table-secondary mt-4 ">
+
+           <div className=" mt-4 card text-dark bg-light">
+           
+           <div className="card-header">
+             Order List
+             </div>
+           <div className="card-body">
+           <div class="table-responsive"> 
+<table className="table table-bordered table-striped mt-4 ">
   <thead>
     <tr>
     <th scope="col">Order Id</th>
@@ -56,7 +63,13 @@ class ManageOrder extends Component {
 ))}
 
    </tbody>
-</table></div>
+</table>      </div>
+ </div>
+            <div className="card-footer">
+     
+            </div>
+            </div>
+       
 
        </Base>
          );

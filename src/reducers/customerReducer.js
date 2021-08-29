@@ -1,5 +1,6 @@
 const customerInitialState = {
-   customer:[],
+   customers:[],
+   customer:{},
    errMsg: ""
 }
 
@@ -12,8 +13,10 @@ const CustomerReducer = (state = customerInitialState, action) =>
             return { ...state, ...action.payload }
         case "SIGN_OUT":
             return { ...state, ...action.payload };
-            case "ERR_RES":
-                return { ...state, errMsg: action.payload };
+        case "ERR_RES":
+            return { ...state, errMsg: action.payload };
+        case "GET_ALL_CUSTOMERS":
+            return{ ...state, customers:[...action.payload]}
         default:
             return state
         }
