@@ -39,7 +39,7 @@ const Signn = (props) => {
               }
               else {
                 if(c && c.loggedIn)  {
-                    return <Redirect to="/books" />
+                    return <Redirect to="/dashboard" />
                  }
                  return <Redirect to="/signin" />
               }

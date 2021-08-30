@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import OrderService from '../../services/OrderService'
 import Base from '../../components/Base'
 import { Link } from 'react-router-dom';
-class ManageOrder extends Component {
+import { connect } from "react-redux";
+const mapStateToProps = state => ({
+    customer: state.customer
+});
+
+class YourOrders extends Component {
+    
     state = { 
         orderDetails:[],
         orderDetailsSearch:[],
@@ -10,7 +16,7 @@ class ManageOrder extends Component {
      }
     async componentDidMount()
     {
-    OrderService.listAllOrders().then((res) => {
+    OrderService.listOrderByCustomer(this.props.customer.customerId).then((res) => {
        this.setState({orderDetails:res.data})
        this.setState({orderDetailsSearch:res.data})}
        )
@@ -37,15 +43,16 @@ class ManageOrder extends Component {
     render() { 
         return ( 
        
-            <Base title="Manage Orders"  className="container p-4"  description="Cancel and delete the orders here">
-           <Link to="/admin" className="rounded btn btn-md btn-primary"> <i className="fas fa-user-lock"/> Admin Home</Link>
+            <Base title="Your Orders"  className="container p-4"  description="Manager your orders here">
+           <Link to="/dashboard" className="rounded btn btn-md btn-primary"> <i className="fas fa-user"/> User Home</Link>
          { console.log(this.state.orderDetailsSearch)} 
+         {    console.log(this.props.customer)}
            <div className=" mt-4 card text-dark bg-light">
            
            <div className="card-header ">
              <div className="row">
                <div className="col-8">
-               <i className="fas fa-chart-bar"/> Order List
+               <i className="fas fa-chart-bar"/> My Order List
                </div>   
                <div className="col-4">
                <div className="input-group rounded">
@@ -68,33 +75,34 @@ class ManageOrder extends Component {
 <table className="table table-striped mt-4 ">
   <thead>
     <tr>
-    <th scope="col">Order Id</th>
-    <th scope="col">Book Id</th>
     <th scope="col">Customer Id</th>
-    <th scope="col">Customer Name</th>
-    <th scope="col">Book Name</th>
-    <th scope="col">Order Status</th>
-    <th scope="col">Update Order Status</th>
+    <th scope="col">Book Id</th>
+    <th scope="col">Book Title</th>
+   
+    <th scope="col">Book Price</th>
+    <th scope="col">Order Quantity</th>
+    <th scope="col">Order Total</th>
+    <th scope="col">Delivery Status</th>
     <th scope="col">Cancel Order</th>
+    
     </tr>
     </thead>
     <tbody>
 {this.state.orderDetails && this.state.orderDetails.map((order) => (
 
         <tr>
-            <td>{order.orderDetailsId}</td>
-           <td>{order.book.bookId}</td>
-           <td>{order.bookOrder.customer.customerId}</td>
-           <td>{order.bookOrder.customer.fullName}</td>
-           <td>{order.book.title}</td>
+         
+           <td>{this.props.customer.customerId}</td>
+           <td>{order.bookId}</td>
+           <td>{order.title}</td>
+           <td>{order.price}</td>
+           <td>{order.quantity}</td>
+           <td>{order.orderTotal}</td>
            <td>{order.deliveryStatus}</td>
-           <td> <Link to={`/admin/orderdetails/${order.orderDetailsId}`}
-              className="rounded btn btn-success">
-              <span className="">Update</span>
-            </Link></td>
-    <td> <button onClick ={() => this.handleDelete(order.orderDetailsId)}  className=" rounded btn btn-danger">
+           <td>  <button onClick ={() => this.handleDelete(order.orderDetailsId)}  className=" rounded btn btn-danger">
     Cancel
             </button></td>
+
         </tr>
 
 ))}
@@ -113,4 +121,4 @@ class ManageOrder extends Component {
     }
 }
  
-export default ManageOrder;
+export default connect(mapStateToProps)(YourOrders);

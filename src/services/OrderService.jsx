@@ -17,6 +17,16 @@ class OrderService {
         
     }
 
+    async listOrderByCustomer(customerId){
+        return await axios.get(BASE_URL+"/customer/"+customerId)
+        
+    }
+
+    async cancelOrder(orderId){
+        return await axios.delete(BASE_URL+"/"+orderId)
+        
+    }
+
     async viewOrderById(orderId)
     {
         return await axios.get(BASE_URL+"/"+orderId)
