@@ -21,6 +21,8 @@ import YourOrders from './components/order/YourOrders';
 import AddAddress from './components/address/AddAddress';
 import YourAddresses from './components/address/YourAddresses';
 import AddBook from './components/book/AddBook';
+import Address from './components/address/address';
+import AddressCustomer from './components/address/addressCustomer';
 
 
 
@@ -44,6 +46,9 @@ function App() {
    <PrivateRoute exact path="/orderdetails/customer/:customerId" component={YourOrders}/>
    <PrivateRoute exact path="/address/add" component={AddAddress}/>
    <PrivateRoute exact path="/customer/address" component={YourAddresses}/>
+   <AdminRoute exact path="/admin/address" component={Address}/>
+   <AdminRoute exact path="/admin/address/customer" component={AddressCustomer}/>
+
 
    <Route exact path="/signin" component={Signin}/>
  

@@ -28,6 +28,9 @@ const adminLeftSide = () => {
                     <Link className="nav-link text-primary" to="/admin/create/book"><i className="fas fa-book-medical"/> Add Book</Link>
                 </li>
                 <li className="list-group-item list-group-item-action">
+                    <Link className="nav-link text-primary " to="/admin/address"><i className="fas fa-address-book"/> Manage Address</Link>
+                </li>
+                <li className="list-group-item list-group-item-action">
                     <Link className="nav-link text-primary " to="/admin/books"><i className="fas fa-swatchbook"/> Manage Books</Link>
                 </li>
                 <li className="list-group-item list-group-item-action">

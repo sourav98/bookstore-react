@@ -22,6 +22,11 @@ class AddressService{
     async updateAddress(address) {
         return await axios.put(BASE_URL, address);
       } 
+
+      async getAddressCustomer() {
+        return await axios.get(BASE_URL + "/customer");
+      }
+
 }
 
 export default new AddressService();

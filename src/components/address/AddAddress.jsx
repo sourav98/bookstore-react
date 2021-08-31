@@ -60,12 +60,12 @@ class AddAddress extends Component {
         console.log(errors);
         if (errors) return;
         AddressService.createAddress(this.state.address).then((res) =>{
-           
+          this.props.history.push("/admin/address");
         }).catch((error) => this.setState({ errMsg: error.response.data.message }));
      };
     render() { 
         return (
-           
+          <Base title="Add Address"  className="container p-4"  description="Add addresses here">
             <div className="mx-auto w-50 border p-3"> 
             {this.state.errMsg && (
             <div className="alert alert-danger" role="alert">
@@ -148,7 +148,7 @@ class AddAddress extends Component {
                    
                     <button type="submit" onClick={this.handleSubmit} class="btn btn-primary">Submit</button>
                 </form>
-                </div>
+                </div></Base>
          );
     }
 }
