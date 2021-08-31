@@ -43,6 +43,8 @@ const PlaceOrder = (props) => {
         setOrderDetails(od);
       };
 
+      const handleRadio = (value) => setOrderDetails({ orderId: value }) 
+
       const handleSubmit = (event) => {
         // Prevents default behaviour of submit button
         event.preventDefault();
@@ -115,40 +117,56 @@ const PlaceOrder = (props) => {
             <div className="col-md-8 order-md-2">
             <form className="container-fluid" onSubmit={handleSubmit}  >
        
-      <form>
-      <div className="form-group mt-4">
-     
-      <input
-      className="btn btn-success"
-      type="button"
-      value="Add New Address"
-     
-    />
+ 
+      <div className="form-group mt-4 float-end">
+      <button type="submit"  className="rounded mt-2 btn  btn-outline-success form-control">
+        <i className="fas fa-plus"/> Add New Details
+        </button>
+    
 
-          </div> </form>
+          </div> 
       
-       
-      <div className="form-group">
-      <label className="col-form-label-md mt-4 lead mb-2" >Choose Your Address</label>
-      <select
-            onChange={handleChange}
-            className="form-control"
-            placeholder="Address"
-            name="orderId"
-          >
-            <option>Select</option>
-            {bookOrder && 
+       <br/>
+     
+       <p class="lead mt-2">
+            
+       Choose Your Details
+        </p>
+        <div class="row mt-2">
+      {bookOrder && 
             bookOrder.map((bo,index)=> (
-             
-                  <option key={index} className="lead text-capitalize" value={bo.orderId}>{bo.shippingAddress.address},{bo.shippingAddress.city}
-                  ,{bo.shippingAddress.pincode}
-                  </option>
-                 
-            ))}
-          </select>
-      </div>
-  
 
+    <div class="col col-md-6">
+    <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+      <div class="form-check">
+        <label>
+          <input 
+            name={bo.orderId}
+            onChange={handleChange} value={bo.orderId} type="radio" name="orderId"  class="form-check-input" id={bo.orderId}/>
+            <div>
+                <small className="text-muted">Name</small>
+                <h6 className="my-0">{bo.recipientName}  </h6>
+              </div>
+              <div>
+                <small className="text-muted">Phone No</small>
+                <h6 className="my-0"> {bo.recipientPhone}  </h6>
+              </div>
+              <div>
+                <small className="text-muted">Payment Method</small>
+                <h6 className="my-0">{bo.paymentMethod}  </h6>
+              </div>
+              <div>
+                <small className="text-muted">Address</small>
+                <h6 className="my-0">{bo.shippingAddress.address} , {bo.shippingAddress.city} , {bo.shippingAddress.pincode}  </h6>
+              </div>
+        {console.log(bo)}
+          </label>   </div>
+      </div>
+    </div>
+
+            ))}
+   </div>
+  
       <div className="form-group">
       <label className="col-form-label-md mt-4 lead mb-2" >Enter the Quantity</label>
       <input
@@ -157,11 +175,12 @@ const PlaceOrder = (props) => {
             className="form-control"
             placeholder="Quantity"
             type="number"
+            min="1"
             value={orderDetails.quantity}
           />
       </div>
       <button type="submit"  className="rounded mt-2 btn btn-success form-control">
-         Place Order
+        <i className="fas fa-shopping-cart"/> Place Order
         </button>
       </form>
               

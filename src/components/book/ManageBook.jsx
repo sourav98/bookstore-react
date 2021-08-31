@@ -37,6 +37,7 @@ const ManageBook = () => {
  <tr>
  <th scope="col">Book Id</th>
    <th scope="col">Book Name</th>
+   <th scope="col">Stock</th>
    <th scope="col">Update Book</th>
    <th scope="col">Delete Book</th>
  </tr>
@@ -47,6 +48,7 @@ const ManageBook = () => {
      <tr>
         <td>{book.bookId}</td>
         <td>{book.title}</td>
+        <td>{book.stock}</td>
         <td> <Link
            className="rounded btn btn-success">
            <span className="">Update</span>

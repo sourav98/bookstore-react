@@ -28,7 +28,7 @@ class YourOrders extends Component {
       
       const filteredOd = this.state.orderDetailsSearch.filter(
         (od) =>
-        od.bookOrder.customer.fullName.toLowerCase().startsWith(event.target.value.toLowerCase())
+        od.title.toLowerCase().startsWith(event.target.value.toLowerCase())
       );
       this.setState({ orderDetails: filteredOd });
     };
@@ -56,7 +56,7 @@ class YourOrders extends Component {
                </div>   
                <div className="col-4">
                <div className="input-group rounded">
-              <input type="search" className="form-control rounded" placeholder="Search By Customer"
+              <input type="search" className="form-control rounded" placeholder="Search By Book"
               value={this.state.search}
               onChange={this.handleSearch}
                 

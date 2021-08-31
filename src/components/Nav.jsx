@@ -21,15 +21,31 @@ const Nav = ({history}) => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+            <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link"to="/books">Books</NavLink >
           </li>
+
+          {customer.loggedIn && !customer.admin ?(
            <li className="nav-item">
-            <a className="nav-link" href="#">Cart</a>
+           <NavLink className="nav-link"to="/dashboard">User Dashboard</NavLink >
           </li>
+          ):( 
+            <div>
+              </div>
+          )}
+
         
+        {customer.loggedIn && customer.admin ?(
+           <li className="nav-item">
+           <NavLink className="nav-link"to="/admin">Admin Dashboard</NavLink >
+          </li>
+          ):( 
+            <div>
+              </div>
+          )}
+
         </ul>
         <div className="text-end">
           {!customer.loggedIn && (
