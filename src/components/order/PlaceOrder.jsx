@@ -12,7 +12,7 @@ const PlaceOrder = (props) => {
     const [orderDetails,setOrderDetails] = useState({
         orderId:"",
         quantity:"",
-        bookId:props.match.params.bookId
+        bookId:props.match.params.bookId,
     });
 
     const customer = useSelector((state) => state.customer);
@@ -128,21 +128,21 @@ const PlaceOrder = (props) => {
       
        <br/>
      
-       <p class="lead mt-2">
+       <p className="lead mt-2">
             
        Choose Your Details
         </p>
-        <div class="row mt-2">
+        <div className="row mt-2">
       {bookOrder && 
             bookOrder.map((bo,index)=> (
 
-    <div class="col col-md-6">
-    <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
-      <div class="form-check">
+    <div className="col col-md-6">
+    <div className="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+      <div className="form-check">
         <label>
           <input 
             name={bo.orderId}
-            onChange={handleChange} value={bo.orderId} type="radio" name="orderId"  class="form-check-input" id={bo.orderId}/>
+            onChange={handleChange} value={bo.orderId} type="radio"  name="orderId"  class="form-check-input" id={bo.orderId}/>
             <div>
                 <small className="text-muted">Name</small>
                 <h6 className="my-0">{bo.recipientName}  </h6>

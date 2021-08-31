@@ -6,7 +6,7 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import Book from './components/Book';
 import AdminDashboard from './components/AdminDashboard';
-import AddBook from './components/AddBook';
+
 
 import ManageOrder from './components/order/ManageOrder';
 import PlaceOrder from './components/order/PlaceOrder';
@@ -20,7 +20,8 @@ import UserDashboard from './components/UserDashboard';
 import YourOrders from './components/order/YourOrders';
 import AddAddress from './components/address/AddAddress';
 import YourAddresses from './components/address/YourAddresses';
-import AddBookOrder from './components/order/AddBookOrder';
+import AddBook from './components/book/AddBook';
+
 
 
 
@@ -37,7 +38,7 @@ function App() {
    <AdminRoute exact path="/admin/orders" component={ManageOrder}/>
    <AdminRoute exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
    <PrivateRoute exact path="/book/:bookId/order" component={PlaceOrder}/>
-   {/* <PrivateRoute exact path="/book/:bookId/order/start" component={AddBookOrder}/> */}
+ 
 
    <PrivateRoute exact path="/dashboard" component={UserDashboard}/>
    <PrivateRoute exact path="/orderdetails/customer/:customerId" component={YourOrders}/>
