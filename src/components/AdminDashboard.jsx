@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { listAllBooks } from "../actions/bookAction";
 import { listAllCustomers } from "../actions/customerAction";
 import OrderService from "../services/OrderService";
+
 let bookCount;
 let customerCount;
-
+let orderCount;
 const adminLeftSide = () => {
 
     return(
@@ -57,7 +58,7 @@ const adminRightSide = () => {
       <div className="col-md-6 col-lg-4 col-xlg-3">
         <div className="card rounded-circle shadow">
           <div className="box p-2 rounded bg-success text-center">
-            <h1 className="fw-light text-white"> 123</h1>
+            <h1 className="fw-light text-white"> {orderCount}</h1>
             <h6 className="text-white"> <i className="fas fa-chart-bar"></i> Total Orders</h6>
            
           </div>
@@ -81,17 +82,16 @@ const adminRightSide = () => {
 
 const AdminDashboard = () => {
   
-  const [orderDetails,setOrderDetails] = useState();
+  const [orderDetails,setOrderDetails] = useState([]);
   
   const dispatch = useDispatch();
 
   useEffect(() => {
    OrderService.listAllOrders().then(res =>{
     setOrderDetails(res.data)
-   },[])
-   
-
+   })
   },[])
+
   useEffect(() => {
       dispatch(listAllBooks())
      dispatch(listAllCustomers())
@@ -103,8 +103,9 @@ const AdminDashboard = () => {
 
 console.log(customers)
 bookCount=books.length;
- customerCount=customers.length-1;
- 
+customerCount=customers.length-1;
+orderCount=orderDetails.length
+
     return ( 
         <Base title="Admin Dashboard" className="container" description="Manage all your products from here">
       <div className="container  mt-4">

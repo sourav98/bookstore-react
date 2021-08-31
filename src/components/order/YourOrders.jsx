@@ -84,7 +84,7 @@ class YourOrders extends Component {
     <th scope="col">Order Total</th>
     <th scope="col">Delivery Status</th>
     <th scope="col">Cancel Order</th>
-    
+    {console.log(this.state.orderDetails)}
     </tr>
     </thead>
     <tbody>

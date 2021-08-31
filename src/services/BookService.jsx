@@ -16,6 +16,11 @@ class BookService {
     {
         return await axios.delete(BASE_URL+"/"+bookId);
     }
+
+    async viewBook(bookId)
+    {
+        return await axios.get(BASE_URL+"/"+bookId);
+    }
 }
 
 export default new BookService();

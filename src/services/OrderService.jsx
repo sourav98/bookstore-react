@@ -4,6 +4,10 @@ const BASE_URL="http://localhost:8081/orderdetails";
 
 class OrderService {
 
+    async addOrder(order) {
+        return await axios.post(BASE_URL,order)
+    }
+
     async listAllOrders() {
         return await axios.get(BASE_URL+"/all")
     }

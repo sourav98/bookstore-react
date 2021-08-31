@@ -18,6 +18,9 @@ import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
 import UserDashboard from './components/UserDashboard';
 import YourOrders from './components/order/YourOrders';
+import AddAddress from './components/address/AddAddress';
+import YourAddresses from './components/address/YourAddresses';
+import AddBookOrder from './components/order/AddBookOrder';
 
 
 
@@ -34,8 +37,13 @@ function App() {
    <AdminRoute exact path="/admin/orders" component={ManageOrder}/>
    <AdminRoute exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
    <PrivateRoute exact path="/book/:bookId/order" component={PlaceOrder}/>
+   {/* <PrivateRoute exact path="/book/:bookId/order/start" component={AddBookOrder}/> */}
+
    <PrivateRoute exact path="/dashboard" component={UserDashboard}/>
    <PrivateRoute exact path="/orderdetails/customer/:customerId" component={YourOrders}/>
+   <PrivateRoute exact path="/address/add" component={AddAddress}/>
+   <PrivateRoute exact path="/customer/address" component={YourAddresses}/>
+
    <Route exact path="/signin" component={Signin}/>
  
    <Route exact path="/" component={Home}/>

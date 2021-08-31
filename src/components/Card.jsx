@@ -19,7 +19,7 @@ class Card extends Component {
   <p className="card-text">{book.description}</p>
  
   <h5 class="mb-3"><span className="text-danger mr-1">₹ {book.price}</span></h5>
-  <Link  to={`/book/${book.bookId}/order`} className="btn btn-warning form-control">
+  <Link  to={`/book/${book.bookId}/order/start`} className="btn btn-warning form-control">
      Buy Now
     </Link>  
   </div>
