@@ -10,7 +10,7 @@ class AddressTable extends Component {
               <div className="col-9">
               <i className="fas fa-chart-bar"/> Address List
               </div>   
-             <div className="col-3"> <NavLink to="/admin/address/customer"><button className="btn btn-success">Filter By Customer</button></NavLink> 
+             <div className="col-3"> <NavLink className="btn btn-secondary" to="/admin/address/customer">Filter By Customer</NavLink> 
              </div>
 
             </div>

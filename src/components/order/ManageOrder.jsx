@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import OrderService from '../../services/OrderService'
 import Base from '../../components/Base'
 import { Link } from 'react-router-dom';
+import Hero from '../Hero';
 class ManageOrder extends Component {
     state = { 
         orderDetails:[],
@@ -37,7 +38,10 @@ class ManageOrder extends Component {
     render() { 
         return ( 
        
-            <Base title="Manage Orders"  className="container p-4"  description="Cancel and delete the orders here">
+            <Hero title="Manage Orders"   description="Cancel and delete the orders here">
+              <div className="col-lg-10 combox">
+           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+            
            <Link to="/admin" className="rounded btn btn-md btn-primary"> <i className="fas fa-user-lock"/> Admin Home</Link>
          { console.log(this.state.orderDetailsSearch)} 
            <div className=" mt-4 card text-dark bg-light">
@@ -106,9 +110,9 @@ class ManageOrder extends Component {
      
             </div>
             </div>
-       
+            </div>  </div>
 
-       </Base>
+       </Hero>
          );
     }
 }

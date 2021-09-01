@@ -3,6 +3,7 @@ import { listAllBooks } from '../../actions/bookAction';
 import Base from '../Base';
 import { useSelector, useDispatch } from "react-redux";
 import Card from './Card';
+import Hero from '../Hero';
 
 
 const Books = () => {
@@ -16,12 +17,13 @@ const Books = () => {
   
     return (
 
-          <Base title="All Books" className="container-fluid p-5" description="Buy and start reading">
+          <Hero title="All Books"  description="Buy and start reading">
               
-              <div className="row row-cols-1 row-cols-md-3 g-4">
+              <div className="row mt-3 p-4">
               {books.map((book,index)=>{
                   return(
-                      <div key={index} className="col-4 mb-4">
+                      <div key={index} className="col-md-4">
+                          
                         <Card book={book}/>
                       </div>
                   )
@@ -29,7 +31,7 @@ const Books = () => {
                
            </div>
               
-        </Base>
+        </Hero>
       );
 }
  

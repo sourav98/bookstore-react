@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listAllBooks } from "../actions/bookAction";
 import { listAllCustomers } from "../actions/customerAction";
 import OrderService from "../services/OrderService";
+import Hero from "./Hero";
 
 let bookCount;
 let customerCount;
@@ -13,10 +14,10 @@ let orderCount;
 const adminLeftSide = () => {
 
     return(
-        <div className="card">
-            <h4 className="card-header bg-dark text-white">
-                <i className="fas fa-user-lock"/> Admin Navigation
-            </h4>
+        <div className="card ">
+            <h5 className="card-header bg-dark text-white">
+                <i className="fas fa-directions"/>  Navigation
+            </h5>
             <ul className="list-group">
                 <li className="list-group-item list-group-item-action">
                     <Link className="nav-link text-primary " to="/admin/create/category"><i className="fas fa-list"/> Create Category</Link>
@@ -37,7 +38,7 @@ const adminLeftSide = () => {
                     <Link className="nav-link text-primary" to="/admin/orders"><i className="fas fa-chart-bar"/> Manage Orders</Link>
                 </li>
             </ul>
-        </div>
+        </div>  
     )
 }
 
@@ -46,10 +47,10 @@ const adminRightSide = () => {
     
     return(
     
-      <div className="row">
+      <div className="row justify-content-center">
     
       
-      <div className="col-md-6 col-lg-4 col-xlg-3">
+      <div className="col-lg mb-2">
         <div className="card rounded-circle shadow">
           <div className="box p-2 rounded bg-primary text-center">
             <h1 className="fw-light text-white">{bookCount}</h1>
@@ -58,7 +59,7 @@ const adminRightSide = () => {
         </div>
       </div>
      
-      <div className="col-md-6 col-lg-4 col-xlg-3">
+      <div className="col-lg  mb-2">
         <div className="card rounded-circle shadow">
           <div className="box p-2 rounded bg-success text-center">
             <h1 className="fw-light text-white"> {orderCount}</h1>
@@ -70,7 +71,7 @@ const adminRightSide = () => {
         
       </div>
   
-      <div className="col-md-6 col-lg-4 col-xlg-3">
+      <div className="col-lg  mb-2">
         <div className="card rounded-circle shadow">
           <div className="box p-2 rounded bg-danger text-center">
             <h1 className="fw-light text-white">{customerCount}</h1>
@@ -110,20 +111,23 @@ customerCount=customers.length-1;
 orderCount=orderDetails.length
 
     return ( 
-        <Base title="Admin Dashboard" className="container" description="Manage all your products from here">
-      <div className="container  mt-4">
-        <div className="row row-cols-md-2 row-cols-md-8">
-            <div className="col">
+      
+        <Hero title="Admin Dashboard" description="Manage all your products from here">
+          <div className="col-lg-9 combox">
+          <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+          
+         <div className="row p-2" >
+            <div className="col-md-4">
             {adminLeftSide()}
           
             </div>
-            <div className="col">
+            <div className="col-md-8 mt-2">
             {adminRightSide()}
             </div>
-        </div>
+           </div>
           </div>
-        
-        </Base>
+          </div>
+        </Hero>
      );
 }
  

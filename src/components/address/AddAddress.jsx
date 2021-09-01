@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import AddressService from '../../services/AddressService';
 import Joi from "joi-browser";
 import Base from '../Base';
+import { NavLink } from 'react-router-dom';
+import { connect } from "react-redux";
 
+const mapStateToProps = state => ({
+  customer: state.customer
+});
 
 class AddAddress extends Component {
     state = { 
         address:{
+          customerId:this.props.customer.customerId,
             addressId: 0,
             address: "",
             city: "",
@@ -18,6 +24,7 @@ class AddAddress extends Component {
      };
 
      schema = {
+      customerId: Joi.number().required(),
         addressId: Joi.number().required(),
         address: Joi.string().min(3).max(30).alphanum().required(),
         city: Joi.string().min(3).alphanum().required(),
@@ -60,20 +67,20 @@ class AddAddress extends Component {
         console.log(errors);
         if (errors) return;
         AddressService.createAddress(this.state.address).then((res) =>{
-          this.props.history.push("/admin/address");
+          this.props.history.push("/dashboard")
         }).catch((error) => this.setState({ errMsg: error.response.data.message }));
      };
     render() { 
         return (
-          <Base title="Add Address"  className="container p-4"  description="Add addresses here">
+          <Base title="Add Address"   description="Add addresses here">
             <div className="mx-auto w-50 border p-3"> 
             {this.state.errMsg && (
             <div className="alert alert-danger" role="alert">
             {this.state.errMsg}
             </div>
             )}  
-            <p class="fw-lighter">Add Address</p>      
-            <form >
+       
+            <form onSubmit={this.handleSubmit} >
                     {/* <div className="mb-3 mt-2 text-start">
                         <label for="addressId">Address ID</label>
                         <input type="text" 
@@ -146,11 +153,11 @@ class AddAddress extends Component {
                         </p>)}
                     </div>
                    
-                    <button type="submit" onClick={this.handleSubmit} class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success">Add</button>
                 </form>
                 </div></Base>
          );
     }
 }
  
-export default AddAddress;
+export default connect(mapStateToProps)(AddAddress);

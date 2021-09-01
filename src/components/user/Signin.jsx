@@ -1,9 +1,11 @@
 import React from 'react';
-import Base from '../Base';
+
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from '../../actions/customerAction';
 import { Link , Redirect} from 'react-router-dom'
+import Hero from '../Hero';
+
 const Signn = (props) => {
 
     const [customer, setCustomer] = useState({
@@ -63,10 +65,11 @@ const Signn = (props) => {
 
     return ( 
        
-        <Base title="Please Sign In" description="Signin to your account here">
+        <Hero title="Please Sign In" description="Signin to your account here">
+             <div className="col-lg-5 combox">
+      <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
               {errorMessage()}
-        <div className="row">
-                       <div className="col-md-6 offset-sm-3 text-left pb-5">
+ 
                            <form onSubmit={handleSubmit}>
                                <div className="form group mb-3">
                                    <label className="text-dark">Email</label>
@@ -89,13 +92,12 @@ const Signn = (props) => {
                                    value={customer.password}
                                    />
                                </div>
-                               <button className="btn btn-success btn-block mt-3">Sign In</button>
+                               <button className="btn btn-success btn-block mt-3 form-control">Sign In</button>
                                
                            </form>
-                       </div>
-                   </div>
+                           </div></div>
                    {performRedirect()}
-                   </Base>
+                   </Hero>
      );
 }
  

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import BookService from '../../services/BookService';
 import Base from '../Base';
+import Hero from '../Hero';
 
 class AddBook extends Component {
     state = {
@@ -49,8 +50,11 @@ class AddBook extends Component {
 
 
     render() { 
-        return (<Base className="container-fluid p-5" title="Add Book" description="Add your books here">
-      <Link to="/admin" className="rounded btn btn-md btn-info">Admin Home</Link>
+        return (<Hero className="container-fluid p-5" title="Add Book" description="Add your books here">
+         <div className="col-lg-9 combox">
+           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+            
+      <Link to="/admin" className="rounded btn btn-md btn-primary">Admin Home</Link>
      
       <form className="container-fluid" onSubmit={this.handleSubmit} >
       <div className="form-group">
@@ -149,8 +153,8 @@ class AddBook extends Component {
          Add Book
         </button>
       </form>
-     
-        </Base>  );
+      </div>  </div>
+        </Hero>  );
     }
 }
  

@@ -3,6 +3,7 @@ import OrderService from '../../services/OrderService'
 import Base from '../../components/Base'
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
+import Hero from '../Hero';
 const mapStateToProps = state => ({
     customer: state.customer
 });
@@ -43,7 +44,9 @@ class YourOrders extends Component {
     render() { 
         return ( 
        
-            <Base title="Your Orders"  className="container p-4"  description="Manager your orders here">
+            <Hero title="Your Orders"  className="container p-4"  description="Manager your orders here">
+           <div className="col-lg-9 combox">
+      <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
            <Link to="/dashboard" className="rounded btn btn-md btn-primary"> <i className="fas fa-user"/> User Home</Link>
          { console.log(this.state.orderDetailsSearch)} 
          {    console.log(this.props.customer)}
@@ -110,13 +113,11 @@ class YourOrders extends Component {
    </tbody>
 </table>      </div>
  </div>
-            <div className="card-footer">
-     
-            </div>
+            
             </div>
        
-
-       </Base>
+            </div></div>
+       </Hero>
          );
     }
 }

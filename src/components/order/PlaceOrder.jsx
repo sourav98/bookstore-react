@@ -7,7 +7,13 @@ import OrderService from '../../services/OrderService'
 import AddAddress from '../address/AddAddress';
 import BookService from '../../services/BookService';
 import './order.css'
+import AddBookOrder from '../bookorder/AddBookOrder';
+import { NavLink, useHistory } from 'react-router-dom';
+import Hero from '../Hero';
 const PlaceOrder = (props) => {
+
+    const history = useHistory();
+    
   
     const [orderDetails,setOrderDetails] = useState({
         orderId:"",
@@ -43,7 +49,7 @@ const PlaceOrder = (props) => {
         setOrderDetails(od);
       };
 
-      const handleRadio = (value) => setOrderDetails({ orderId: value }) 
+  
 
       const handleSubmit = (event) => {
         // Prevents default behaviour of submit button
@@ -56,9 +62,12 @@ const PlaceOrder = (props) => {
       };
        
        
-    return ( <Base title="Place Your Order"  className="container p-4"  description="Fill the details and order now">
-          
+    return ( <Hero title="Place Your Order"  className="container p-4"  description="Fill the details and order now">
+          <div className="col-lg-10 combox">
+           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+            
           <div className="row">
+          
            <div className="col-md-4 order-md-1 mb-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
             <span className="text-muted">Added Order</span>
@@ -115,17 +124,17 @@ const PlaceOrder = (props) => {
 
             {/* Right Side */}
             <div className="col-md-8 order-md-2">
-            <form className="container-fluid" onSubmit={handleSubmit}  >
+          
        
  
       <div className="form-group mt-4 float-end">
-      <button type="submit"  className="rounded mt-2 btn  btn-outline-success form-control">
+      <button onClick={() => history.push("/details/new",{from :"PlaceOrder"})} className="rounded mt-2 btn  btn-outline-success form-control">
         <i className="fas fa-plus"/> Add New Details
         </button>
     
 
           </div> 
-      
+          <form className="container-fluid" onSubmit={handleSubmit}  >
        <br/>
      
        <p className="lead mt-2">
@@ -159,9 +168,9 @@ const PlaceOrder = (props) => {
                 <small className="text-muted">Address</small>
                 <h6 className="my-0">{bo.shippingAddress.address} , {bo.shippingAddress.city} , {bo.shippingAddress.pincode}  </h6>
               </div>
-        {console.log(bo)}
+      
           </label>   </div>
-      </div>
+      </div><br/>
     </div>
 
             ))}
@@ -186,9 +195,9 @@ const PlaceOrder = (props) => {
               
               </div>
               </div>
-          
-          
-    </Base> );
+   
+              </div>   </div>
+    </Hero> );
 }
  
 export default PlaceOrder;

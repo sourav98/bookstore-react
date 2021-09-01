@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AddressService from "../../services/AddressService";
 import Base from "../Base";
+import Hero from "../Hero";
 import AddressTable from "./addressTable";
 class Address extends Component {
   state = {
@@ -50,8 +51,11 @@ class Address extends Component {
 
   render() {
     return (
-      <Base title="Manage Address"  className="container p-4"  description="Address Database">
-        <div className="mt-3 w-75 mx-auto">
+      <Hero title="Manage Address"  description="Address Database">
+          <div className="col-lg-9 combox">
+           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+            
+        <div className="mt-3 mx-auto">
       
         <div className="d-flex justify-content-end">
           <div>
@@ -80,7 +84,9 @@ class Address extends Component {
             handleDelete={this.handleDelete}
           />
         </div>
-      </Base>
+        </div>
+        </div>
+      </Hero>
     );
   }
 }

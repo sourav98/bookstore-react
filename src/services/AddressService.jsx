@@ -27,6 +27,10 @@ class AddressService{
         return await axios.get(BASE_URL + "/customer");
       }
 
+       async getAddressByCustomerId(customerId) {
+        return await axios.get(BASE_URL + "/customer/"+customerId);
+      }
+
 }
 
 export default new AddressService();
