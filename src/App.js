@@ -34,6 +34,8 @@ import UpdateBookOrder from './components/bookorder/UpdateBookOrder';
 import Category from './components/category/category';
 import UpdateCategory from './components/category/updateCategory';
 import UpdateAddress from './components/address/UpdateAddress';
+import ViewReview from './components/review/ViewReview';
+import UpdateReview from './components/review/UpdateReview';
 
 
 function App() {
@@ -68,6 +70,7 @@ function App() {
     
     
     <PrivateRoute exact path="/address/update/:addressId" component={UpdateAddress}/>
+    <PrivateRoute exact path="/review/update/:reviewId" component={UpdateReview}/>
 
   
    <Route exact path="/signin" component={Signin}/>
@@ -75,6 +78,9 @@ function App() {
    <Route exact path="/head" component={Hero}/>
  
    <Route exact path="/" component={Home}/>
+
+   <Route exact path="/review/book/:bookId" component={ViewReview}/>
+
    
     </Switch>
      

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 const Card = (props) => {
       console.log(props);
@@ -16,6 +17,9 @@ const Card = (props) => {
             <h5 className="mb-3"><span className="text-danger mr-1">₹ {props.book.price}</span></h5>
             <Link  to={`/book/${props.book.bookId}/order`} className="btn btn-warning form-control">
             Buy Now
+            </Link>  
+            <Link  to={`/review/book/${props.book.bookId}`} className="btn btn-warning form-control">
+            View More
             </Link>  
             </div>
             <div className="card-footer">
