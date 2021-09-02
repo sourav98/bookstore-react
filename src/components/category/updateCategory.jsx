@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import CategoryService from '../services/CategoryService';
 import Joi from "joi-browser";
+import CategoryService from '../../services/CategoryService';
+import Hero from '../Hero';
 
 class UpdateCategory extends Component {
     state = { 
         category: {
-            categoryId: 0,
+            categoryId:this.props.match.params.categoryId,
             categoryName: "",
         },
         errors: {},
@@ -38,7 +39,7 @@ class UpdateCategory extends Component {
 
    };
      componentDidMount(){
-        CategoryService.getById(this.props.match.params.id).then((res) => 
+        CategoryService.getById(this.props.match.params.categoryId).then((res) => 
         this.setState({ category : res.data })
         );
      }
@@ -64,26 +65,30 @@ class UpdateCategory extends Component {
           if (errors) return;
 
 
-        CategoryService.editCategory(this.state.category).then((res)=>{
-            this.props.history.push("/categories");
-        }).catch((error) => this.setState({ errMsg: error.response.data.message }));
+        CategoryService.editCategory(this.state.category,this.props.match.params.categoryId).then((res)=>{
+            this.props.history.push("/admin/categories");
+        })
     };
       handleReset = (event) => {
         event.preventDefault();
         CategoryService.getCategories(this.state.category).then((res) => {
-          this.props.history.push("/categories");
+          this.props.history.push("/admin/categories");
         })
       };
     render() { 
         return ( 
-          <div className="w-50 mx-auto mt-3">
+          <Hero>
+              <div className="col-md-6 combox">
+           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+          <div className="mx-auto mt-3">
           {this.state.errMsg && (
             <div className="alert alert-danger" role="alert">
               {this.state.errMsg}
             </div>
           )}
-          <div className="border shadow-lg p-3">
-            <h3 className="bg-secondary text-white p-1">Update Category</h3>
+          <div className=
+          "">
+         
             <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
               <div className="mb-3 text-start">
                 <label htmlFor="empId">Category Id</label>
@@ -130,8 +135,9 @@ class UpdateCategory extends Component {
                 </button>
               </div>
             </form>
-          </div>
+          </div> </div>
         </div>
+        </div></Hero>
          );
     }
 }

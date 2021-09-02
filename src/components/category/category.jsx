@@ -76,7 +76,7 @@ class Category extends Component {
             </form>
           </div>
           <div className="col-3">
-            <Link to="/category/add">
+            <Link to="/admin/create/category/">
               <input
                 type="button"
                 className="btn btn-success mb-3 ms-3 form-control"

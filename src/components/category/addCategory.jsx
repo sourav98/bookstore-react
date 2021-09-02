@@ -60,7 +60,7 @@ class AddCategory extends Component {
         if (errors) return;
         CategoryService.addCategory(this.state.category).then(
           (res) => {
-            this.props.history.push("/categories");
+            this.props.history.push("/admin/categories");
           }).catch((error) => this.setState({ errMsg: error.response.data.message }));
         
      
@@ -72,7 +72,7 @@ class AddCategory extends Component {
     handleReset = (event) => {
       event.preventDefault();
       CategoryService.getCategories(this.state.category).then((res) => {
-        this.props.history.push("/categories");
+        this.props.history.push("/admin");
       })
     };
 

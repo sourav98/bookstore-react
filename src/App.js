@@ -30,6 +30,7 @@ import ManageBookOrder from './components/bookorder/ManageBookOrder';
 import SignUp from './components/user/SignUp';
 import AddCategory from './components/category/addCategory';
 import Category from './components/category/category';
+import UpdateCategory from './components/category/updateCategory';
 
 
 
@@ -61,7 +62,9 @@ function App() {
    <AdminRoute exact path="/admin/address/customer" component={AddressCustomer}/>
     <AdminRoute path ="/admin/create/category" component={AddCategory}/>
     <Route path="/admin/categories" component={Category}/>
- 
+    <AdminRoute path ="/category/update/:categoryId" component={UpdateCategory}/>
+    
+    
 
   
    <Route exact path="/signin" component={Signin}/>
