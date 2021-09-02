@@ -51,7 +51,7 @@ const Nav = ({history}) => {
           {!customer.loggedIn && (
             <li>
             <NavLink className="btn btn-outline-light me-2" to="/signin">Login</NavLink>
-            <NavLink to="/" className="btn btn-warning">Register</NavLink>
+            <NavLink to="/signup" className="btn btn-warning">Register</NavLink>
             </li>
           )}
           {customer.loggedIn && (

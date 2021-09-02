@@ -4,3 +4,46 @@
  
    
 }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body::-webkit-scrollbar {
+    width: 0;
+  }
+   
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   
+  body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+.book {
+    position: absolute; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .book::before {
+        content: "";
+      background-image: url('https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg');
+      background-size: cover;
+      position: absolute;
+      top: -50px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 1;
+      }
+.random{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    top: 50px;
+    opacity: 0.9;
+    border-radius: 10px;
+}

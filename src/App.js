@@ -27,6 +27,7 @@ import AddBookOrder from './components/bookorder/AddBookOrder';
 
 import Hero from './components/Hero';
 import ManageBookOrder from './components/bookorder/ManageBookOrder';
+import SignUp from './components/user/SignUp';
 
 
 
@@ -59,6 +60,7 @@ function App() {
 
 
    <Route exact path="/signin" component={Signin}/>
+   <Route exact path="/signup" component={SignUp}/>
    <Route exact path="/head" component={Hero}/>
  
    <Route exact path="/" component={Home}/>
