@@ -21,6 +21,7 @@ import YourOrders from './components/order/YourOrders';
 import AddAddress from './components/address/AddAddress';
 import YourAddresses from './components/address/YourAddresses';
 import AddBook from './components/book/AddBook';
+import UpdateBook from './components/book/updateBook';
 import Address from './components/address/address';
 import AddressCustomer from './components/address/addressCustomer';
 import AddBookOrder from './components/bookorder/AddBookOrder';
@@ -41,6 +42,7 @@ function App() {
    <AdminRoute exact path="/admin" component={AdminDashboard}/>
    <AdminRoute exact path="/admin/create/book" component={AddBook}/>
    <AdminRoute exact path="/admin/books" component={ManageBook}/>
+   <AdminRoute exact path="/admin/books/update/:id" component={UpdateBook}/>
    <AdminRoute exact path="/admin/orders" component={ManageOrder}/>
    <AdminRoute exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
    <PrivateRoute exact path="/book/:bookId/order" component={PlaceOrder}/>
