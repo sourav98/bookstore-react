@@ -6,7 +6,7 @@ const Home = () => {
     return (
       <div>
       <div className="book"></div>
-      <div className="container random bg-dark text-white  " style={{height:"400px" , width:"900px"}}>
+      <div className="container random bg-dark text-white  " style={{height:"400px" , width:"920px"}}>
         <div className="  px-4 pt-5 my-5 text-center">
         <h1 className="display-4 fw-bold ">Welcome to The Book Store.</h1>
         <div className="col-lg-6 mx-auto">
