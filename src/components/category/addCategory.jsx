@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CategoryService from '../../services/CategoryService';
 import Joi from "joi-browser";
+import Hero from '../Hero';
 
 class AddCategory extends Component {
     state = { 
@@ -59,7 +60,7 @@ class AddCategory extends Component {
         if (errors) return;
         CategoryService.addCategory(this.state.category).then(
           (res) => {
-            this.props.history.push("/categories");
+            this.props.history.push("/admin/categories");
           }).catch((error) => this.setState({ errMsg: error.response.data.message }));
         
      
@@ -71,20 +72,22 @@ class AddCategory extends Component {
     handleReset = (event) => {
       event.preventDefault();
       CategoryService.getCategories(this.state.category).then((res) => {
-        this.props.history.push("/categories");
+        this.props.history.push("/admin");
       })
     };
 
     render() { 
         return ( 
-          <div className="w-50 mx-auto mt-3">
+          <Hero title="Add Category">
+        
+         <div className="col-md-6 combox">
+           <div class="h-100  p-2 bg-light shadow p-3 mb-5  rounded">
+           <div className="w-50 mx-auto mt-3">
           {this.state.errMsg && (
             <div className="alert alert-danger" role="alert">
               {this.state.errMsg}
             </div>
           )}
-          <div className="border shadow-lg p-3">
-            <h3 className="bg-secondary text-white p-1">Add Category</h3>
             <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
               <div className="mb-3 text-start">
                 <label htmlFor="empId">Category Id</label>
@@ -121,16 +124,17 @@ class AddCategory extends Component {
               </div>
         
               <div >
-                <button type="submit" className="btn  btn-secondary">
-                  Submit
+                <button type="submit" className="btn btn-success">
+                  Add
                 </button>
                 <button type="reset" className="btn  btn-secondary ms-3">
                   Cancel
                 </button>
               </div>
             </form>
-          </div>
+          </div></div>
         </div>
+        </Hero>
          );
     }
 }

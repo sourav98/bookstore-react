@@ -5,7 +5,7 @@ class CategoryTable extends Component {
     
     render() { 
         return ( 
-            <table className="table table-hover  table-secondary">
+            <table className="table table-striped table-hover  table-light">
             <thead>
               <tr className="table-secondary">
                 <th>Category Id</th>
@@ -20,7 +20,7 @@ class CategoryTable extends Component {
                   <td>{cat.categoryId}</td>
                   <td>{cat.categoryName}</td>
                   <td>
-                    <Link to={`/category/update/${cat.categoryId}`}>
+                    <Link to={`/category/update/${cat.categoryId}`} p>
                       <input type="button"
                       className="btn btn-secondary mx-3"
                       value="Update"
