@@ -28,6 +28,7 @@ import AddBookOrder from './components/bookorder/AddBookOrder';
 import Hero from './components/Hero';
 import ManageBookOrder from './components/bookorder/ManageBookOrder';
 import SignUp from './components/user/SignUp';
+import AddCategory from './components/category/addCategory';
 
 
 
@@ -58,7 +59,7 @@ function App() {
    <AdminRoute exact path="/admin/address" component={Address}/>
    <AdminRoute exact path="/admin/address/customer" component={AddressCustomer}/>
 
-
+    <Route path ="/addCategory" component={AddCategory}/>
    <Route exact path="/signin" component={Signin}/>
    <Route exact path="/signup" component={SignUp}/>
    <Route exact path="/head" component={Hero}/>

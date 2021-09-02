@@ -92,7 +92,7 @@ const SignUp = (props) => {
                                    value={customer.password}
                                    />
                                </div>
-                               <button className="btn btn-success btn-block mt-3">Sign Up</button>
+                               <button className="btn btn-success form-control btn-block mt-3">Sign Up</button>
                                
                            </form>
                        </div>
