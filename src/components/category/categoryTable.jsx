@@ -5,7 +5,7 @@ class CategoryTable extends Component {
     
     render() { 
         return ( 
-            <table className="table table-hover  table-secondary">
+            <table className="table table-striped table-hover  table-light">
             <thead>
               <tr className="table-secondary">
                 <th>Category Id</th>

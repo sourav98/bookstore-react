@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import CategoryService from "../../services/CategoryService";
+import Hero from '../Hero';
 import CategoryTable from './categoryTable';
 
 
@@ -58,9 +59,12 @@ class Category extends Component {
 
     render() { 
         return ( 
-            <div className="mt-3 w-75 mx-auto">
-        <div className="d-flex justify-content-end">
-          <div>
+          <Hero title="Categories">
+            <div className="col-md-6 combox">
+           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+          <div className="row">
+           
+          <div className="col-9">
             <form>
               <input
                 type="search"
@@ -71,20 +75,19 @@ class Category extends Component {
               />
             </form>
           </div>
-          <div>
+          <div className="col-3">
             <Link to="/category/add">
               <input
                 type="button"
-                className="btn btn-success mb-3 ms-3"
+                className="btn btn-success mb-3 ms-3 form-control"
                 value="Add"
               />
-            </Link>
-          </div>
-        </div>
+            </Link></div>
+       
         <CategoryTable categories={this.state.categories}
                 handleDelete={this.handleDelete}
-                />
-      </div>
+                /></div></div>
+      </div></Hero>
          );
     }
 }
