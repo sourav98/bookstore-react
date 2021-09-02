@@ -164,7 +164,6 @@ class AddAddress extends Component {
                         {this.state.errors.pincode}
                         </p>)}
                     </div>
-                   
                     <button type="submit" class="btn btn-success">Add</button>
                 </form></div></div>
                 </div></Hero>
