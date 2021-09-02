@@ -21,6 +21,17 @@ class BookService {
     {
         return await axios.get(BASE_URL+"/"+bookId);
     }
+
+    async updateBook(book)
+    {
+        return await axios.put(BASE_URL,book) ;
+    }
+
+    async getBookById(bookId)
+    {
+        return await axios.get(BASE_URL+"/"+bookId) ;
+    }
 }
 
 export default new BookService();
+

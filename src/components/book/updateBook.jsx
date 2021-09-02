@@ -1,14 +1,15 @@
+
 import React, { Component } from "react";
 import CategoryService from "../../services/CategoryService.jsx";
-
+import Hero from "../Hero.jsx";
 import { Link } from "react-router-dom";
 import BookService from "../../services/BookService";
 import Joi from "joi-browser";
-import Hero from "../Hero" ;
 
-class AddBook extends Component {
+class UpdateBook extends Component {
   state = {
     book: {
+      bookId:0,
       title: "",
       author: "",
       description: "",
@@ -16,8 +17,8 @@ class AddBook extends Component {
       price: "",
       publishDate: "",
       lastUpdatedOn: "",
-      stock:"",
-      category: "",
+      stock: "",
+      category:0,
       categories: [],
       imgUrl: "",
     },
@@ -26,18 +27,18 @@ class AddBook extends Component {
   };
 
   schema = {
+    bookId: Joi.number(),
     title: Joi.string().required(),
-    author:Joi.string().required(),
-    isbn:Joi.string().required(),
-    price:Joi.string().required(),
-    publishDate:Joi.string().required(),
-    stock:Joi.number().required(),
-    category:Joi.string().required(),
-    description:Joi.string(),
+    author: Joi.string().required(),
+    isbn: Joi.string().required(),
+    price: Joi.string().required(),
+    publishDate: Joi.string().required(),
+    stock: Joi.number().required(),
+    category: Joi.number().required(),
+    description: Joi.string(),
     lastUpdatedOn: Joi.string(),
     imgUrl: Joi.string(),
-    categories:Joi.array().items(Joi.string()),
-
+    categories: Joi.array().items(Joi.string()),
   };
 
   validate = () => {
@@ -59,7 +60,11 @@ class AddBook extends Component {
     return Object.keys(errors).length === 0 ? null : errors;
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    BookService.getBookById(this.props.match.params.id).then((res) =>
+      this.setState({ book: res.data })
+    );
+
     CategoryService.viewAllCategories().then((res) =>
       this.setState({ categories: res.data })
     );
@@ -80,7 +85,7 @@ class AddBook extends Component {
     this.setState({ errors: errors || {} });
     console.log(errors);
     if (errors) return;
-    BookService.createBook(this.state.book)
+    BookService.updateBook(this.state.book)
       .then((res) => {
         this.props.history.push("/books");
       })
@@ -91,10 +96,10 @@ class AddBook extends Component {
     return (
       <Hero
         className="container-fluid p-5"
-        title="Add Book"
-        description="Add your books here"
+        title="Update Book"
+        description="Update Your Book Details Here"
       >
-         <div className="col-lg-9 combox">
+          <div className="col-lg-9 combox">
            <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
        
           {this.state.errMsg && (
@@ -281,7 +286,7 @@ class AddBook extends Component {
               type="submit"
               className="rounded mt-2 btn btn-success form-control"
             >
-              Add Book
+              Update Book
             </button>
             
           </form>
@@ -292,6 +297,6 @@ class AddBook extends Component {
   }
 }
 
+export default UpdateBook;
 
-export default AddBook;
 
