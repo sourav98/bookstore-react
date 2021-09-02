@@ -106,7 +106,7 @@ class YourOrders extends Component {
     <th scope="col">Order Quantity</th>
     <th scope="col">Order Total</th>
     <th scope="col">Delivery Status</th>
-    <th scope="col">Cancel Order</th>
+    <th scope="col"></th>
     {console.log(this.state.orderDetails)}
     </tr>
     </thead>
@@ -122,8 +122,8 @@ class YourOrders extends Component {
            <td>{order.quantity}</td>
            <td>{order.orderTotal}</td>
            <td>{order.deliveryStatus}</td>
-           <td>  <button onClick ={() => this.handleDelete(order.orderDetailsId)}  className=" rounded btn btn-danger">
-    Cancel
+           <td> <button onClick ={() => this.handleDelete(order.orderDetailsId)}  className=" rounded btn btn-outline-danger">
+             Cancel <i className="fas fa-times-circle"/>
             </button></td>
 
         </tr>

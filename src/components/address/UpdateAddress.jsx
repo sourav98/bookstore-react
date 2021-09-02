@@ -14,7 +14,7 @@ class AddAddress extends Component {
     state = { 
     
         address:{
-           
+          //  customerId:this.props.customer.customerId,
             addressId: this.props.match.params.addressId,
             address: "",
             city: "",
@@ -33,7 +33,7 @@ class AddAddress extends Component {
      }
 
      schema = {
-     
+      // customerId:Joi.required(),
         addressId: Joi.number().required(),
         address: Joi.string().min(3).max(30).alphanum().required(),
         city: Joi.string().min(3).alphanum().required(),

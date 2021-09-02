@@ -54,7 +54,7 @@ class AddBookOrder extends Component {
 
   async componentDidMount()
   {
-    AddressService.getAddresses().then((res) => 
+    AddressService.getAddressByCustomerId(this.props.customer.customerId).then((res) => 
     this.setState({address:res.data}),
      )
   }
