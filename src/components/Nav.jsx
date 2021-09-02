@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 import { Link, withRouter } from 'react-router-dom';
 import { signOut } from '../actions/customerAction';
 import { useDispatch, useSelector } from "react-redux";
+import UseAnimations from 'react-useanimations';
+import menu from 'react-useanimations/lib/menu'
+import lock from 'react-useanimations/lib/lock'
+
 const Nav = ({history}) => {
 
   const dispatch = useDispatch();
@@ -15,8 +19,8 @@ const Nav = ({history}) => {
         <b> Book</b>Store
           </NavLink >
 
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
+      <button className="navbar-toggler btn btn-light me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span ><UseAnimations animation={menu} size={28}  speed={0.6}/></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
