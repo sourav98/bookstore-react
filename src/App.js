@@ -31,6 +31,7 @@ import SignUp from './components/user/SignUp';
 import AddCategory from './components/category/addCategory';
 import Category from './components/category/category';
 import UpdateCategory from './components/category/updateCategory';
+import UpdateAddress from './components/address/UpdateAddress';
 
 
 
@@ -65,6 +66,7 @@ function App() {
     <AdminRoute path ="/category/update/:categoryId" component={UpdateCategory}/>
     
     
+    <PrivateRoute exact path="/address/update/:addressId" component={UpdateAddress}/>
 
   
    <Route exact path="/signin" component={Signin}/>

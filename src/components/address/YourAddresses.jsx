@@ -18,7 +18,7 @@ const YourAddresses = (props) =>
     useEffect(() => {
       AddressService.getAddressByCustomerId(customer.customerId).then(res =>{
         setAddress(res.data)
-        console.log(res.data.addressId)
+        console.log(res.data)
       })
      },[])
 
@@ -43,8 +43,8 @@ return(
   {address.map((bo) => (
     
     <div className="col-md-4">
-    <div className="card bg-secondary text-white ">
-    <div class="card-header">
+    <div className="card bg-light text-white mb-3 ">
+    <div class="card-header text-dark">
       Address
     </div>
     <ul class="list-group list-group-flush">
@@ -71,12 +71,25 @@ return(
 
   
     </ul>
-    <input type="button"
-                        className="btn btn-secondary ms-1"
+    <center>
+    <div className="row mt-2 mb-2">
+    <div className="col">
+
+    <Link to={`/address/update/${bo.addressId}`}>
+                        <input type="button"
+                        className="btn btn-secondary"
+                        value="Update"
+
+                        />
+                        </Link> 
+                        </div>
+                        <div className="col">
+       <input type="button"
+                        className="btn btn-outline-dark"
                         value="Delete"
                         onClick={() => handleDelete(bo.addressId)}
                         />
-    
+   </div> </div></center>
      </div></div>
   
   ))}
