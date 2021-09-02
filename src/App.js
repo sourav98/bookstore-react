@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, Redirect } from "react-router-dom";
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Book from './components/Book';
+
 import AdminDashboard from './components/AdminDashboard';
 
 
@@ -30,8 +30,9 @@ import ManageBookOrder from './components/bookorder/ManageBookOrder';
 import SignUp from './components/user/SignUp';
 import AddCategory from './components/category/addCategory';
 import UpdateBookOrder from './components/bookorder/UpdateBookOrder';
-
-
+import Category from './components/category/category';
+import UpdateCategory from './components/category/updateCategory';
+import UpdateAddress from './components/address/UpdateAddress';
 
 
 function App() {
@@ -59,8 +60,14 @@ function App() {
 
    <AdminRoute exact path="/admin/address" component={Address}/>
    <AdminRoute exact path="/admin/address/customer" component={AddressCustomer}/>
+    <AdminRoute path ="/admin/create/category" component={AddCategory}/>
+    <Route path="/admin/categories" component={Category}/>
+    <AdminRoute path ="/category/update/:categoryId" component={UpdateCategory}/>
+    
+    
+    <PrivateRoute exact path="/address/update/:addressId" component={UpdateAddress}/>
 
-    <Route path ="/addCategory" component={AddCategory}/>
+  
    <Route exact path="/signin" component={Signin}/>
    <Route exact path="/signup" component={SignUp}/>
    <Route exact path="/head" component={Hero}/>

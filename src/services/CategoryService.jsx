@@ -26,8 +26,8 @@ class CategoryService {
         return await axios.delete(BASE_URL +"/delete/"+ categoryId);
     }
 
-    async editCategory(category){
-        return await axios.put(BASE_URL , category);
+    async editCategory(category,categoryId){
+        return await axios.put(BASE_URL+"/"+categoryId , category);
     }
 
 }

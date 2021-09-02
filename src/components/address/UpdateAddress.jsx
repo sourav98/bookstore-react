@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddressService from '../../services/AddressService';
 import Joi from "joi-browser";
 import Base from '../Base';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import Hero from '../Hero';
 
@@ -12,20 +12,28 @@ const mapStateToProps = state => ({
 
 class AddAddress extends Component {
     state = { 
+    
         address:{
-          customerId:this.props.customer.customerId,
-            addressId: 0,
+           
+            addressId: this.props.match.params.addressId,
             address: "",
             city: "",
             country: "",
             pincode: "",
+          
         },
         errors: {},
         errMsg: "",
      };
 
+     componentDidMount(){
+        AddressService.getAddressById(this.props.match.params.addressId).then((res) => 
+        this.setState({ address : res.data })
+        );
+     }
+
      schema = {
-      customerId: Joi.number().required(),
+     
         addressId: Joi.number().required(),
         address: Joi.string().min(3).max(30).alphanum().required(),
         city: Joi.string().min(3).alphanum().required(),
@@ -35,7 +43,7 @@ class AddAddress extends Component {
       validate = () => {
         const errors = {};
         // Validate account details with schema
-        const result = Joi.validate(this.state.address, this.schema, {
+        const result = Joi.validate(this.state.address1, this.schema, {
           abortEarly: false,
         });
         console.log(result);
@@ -67,18 +75,16 @@ class AddAddress extends Component {
         this.setState({ errors: errors || {} });
         console.log(errors);
         if (errors) return;
-        AddressService.createAddress(this.state.address).then((res) =>{
-          this.props.history.push("/dashboard")
+        AddressService.updateAddress(this.state.address).then((res) =>{
+          this.props.history.push("/customer/address")
         }).catch((error) => this.setState({ errMsg: error.response.data.message }));
      };
     render() { 
         return (
-          <Hero title="Add Address"   description="Add addresses here">
-                 <div className="col-md-6 combox">
+          <Hero title="Update Address"   description="Update your addresses here">
+            <div className="col-md-6 combox">
           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
-                   
-      <Link to="/dashboard" className="rounded btn btn-md btn-primary mb-2"> Back Home</Link>
-            <div className="mx-auto border p-3"> 
+            <div className="mx-auto  border p-3"> 
             {this.state.errMsg && (
             <div className="alert alert-danger" role="alert">
             {this.state.errMsg}
@@ -100,6 +106,7 @@ class AddAddress extends Component {
                 </p>
               )}
                     </div> */}
+                    
                     <div className="mb-3 mt-2 text-start">
                         <label for="address">Address</label>
                         <input type="text"
@@ -157,7 +164,6 @@ class AddAddress extends Component {
                         {this.state.errors.pincode}
                         </p>)}
                     </div>
-                   
                     <button type="submit" class="btn btn-success">Add</button>
                 </form></div></div>
                 </div></Hero>

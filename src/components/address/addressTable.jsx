@@ -39,15 +39,9 @@ class AddressTable extends Component {
                     <td>{address.country}</td>
                     <td>{address.pincode}</td>
                     <td>
-                        <Link to={`/address/update/${address.addressId}`}>
+                        
                         <input type="button"
-                        className="btn btn-primary"
-                        value="Update"
-
-                        />
-                        </Link>
-                        <input type="button"
-                        className="btn btn-secondary ms-1"
+                        className="btn btn-danger ms-1"
                         value="Delete"
                         onClick={() => this.props.handleDelete(address.addressId)}
                         />
