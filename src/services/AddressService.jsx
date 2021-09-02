@@ -8,7 +8,8 @@ class AddressService{
     }
 
     async deleteAddress(addressId){
-        return await axios.delete(BASE_URL+"/delete/"+addressId);
+         await axios.delete(BASE_URL+"/delete/"+addressId);
+         
     }
 
     async createAddress(address){

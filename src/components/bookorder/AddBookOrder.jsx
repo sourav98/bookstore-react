@@ -49,10 +49,7 @@ const AddBookOrder = () => {
      <Hero title="Add New Details"  className="container-fluid p-5" description="Add new details here">
                <div className="col-lg-9 combox">
            <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
-            
-            <NavLink to="/address/add" className="rounded mt-2 btn  btn-outline-success">
-        <i className="fas fa-plus"/> Add New Address
-        </NavLink>
+         
          <form className="container-fluid" onSubmit={handleSubmit} >
       <div className="form-group">
         <label className="col-form-label-md mt-4" >Choose from Exisitng Address</label>

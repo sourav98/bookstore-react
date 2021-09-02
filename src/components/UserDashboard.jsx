@@ -41,7 +41,7 @@ const adminLeftSide = (props) => {
             </div>
           </div></NavLink>
         </div>
-        
+   
       </div>
        
 
@@ -121,7 +121,10 @@ useEffect(() => {
             </li>
             </ul>
             <NavLink to="/address/add">
-              <button className="btn btn-outline-dark"style={{ textDecoration: 'none' }} >Add New Address</button></NavLink> 
+              <button className="btn btn-outline-dark"style={{ textDecoration: 'none',marginRight:"10px" }} >Add New Address</button></NavLink> 
+            
+              <NavLink to="/customer/details">
+              <button className="btn btn-outline-danger "style={{ textDecoration: 'none' }} >Manage Details</button></NavLink>
             </div>
 
             {/* Customer Navigations */}

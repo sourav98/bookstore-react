@@ -13,14 +13,15 @@ class YourOrders extends Component {
     state = { 
         orderDetails:[],
         orderDetailsSearch:[],
-        search:""
+        search:"",
+        errorMsg:""
      }
     async componentDidMount()
     {
     OrderService.listOrderByCustomer(this.props.customer.customerId).then((res) => {
        this.setState({orderDetails:res.data})
        this.setState({orderDetailsSearch:res.data})}
-       )
+       ).catch(error => {this.setState({errorMsg:error.response.data.message })})
     }
 
     handleSearch = (event) => {
@@ -41,13 +42,32 @@ class YourOrders extends Component {
       });
     };
 
+    
+    errorMessage = () => 
+    {
+        return(
+            <div className="row">
+            <div className="col">
+        <div className="alert alert-danger"  style={{display:this.state.errorMsg ? "" : "none"}}>
+        <i className="fas fa-exclamation-triangle"></i>  {this.state.errorMsg}
+        </div>
+        </div>
+        </div>
+
+        )}  
+
     render() { 
         return ( 
        
             <Hero title="Your Orders"  className="container p-4"  description="Manager your orders here">
-           <div className="col-lg-9 combox">
+                <div className="col-lg-9 combox">
       <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
-           <Link to="/dashboard" className="rounded btn btn-md btn-primary"> <i className="fas fa-user"/> User Home</Link>
+              {
+              this.state.errorMsg ? (<div>
+{this.errorMessage()}
+              </div>):
+              (<div>
+<Link to="/dashboard" className="rounded btn btn-md btn-primary"> <i className="fas fa-user"/> User Home</Link>
          { console.log(this.state.orderDetailsSearch)} 
          {    console.log(this.props.customer)}
            <div className=" mt-4 card text-dark bg-light">
@@ -116,6 +136,12 @@ class YourOrders extends Component {
             
             </div>
        
+
+              </div>)
+            
+            }
+         
+           
             </div></div>
        </Hero>
          );

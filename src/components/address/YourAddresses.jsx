@@ -13,12 +13,25 @@ const YourAddresses = (props) =>
     const customer = useSelector((state) => state.customer);
     const [bookOrder,setBookOrder] = useState([]);
   const [address,setAddress] = useState([]);
+  const [error,setError] = useState([]);
     
     useEffect(() => {
       AddressService.getAddressByCustomerId(customer.customerId).then(res =>{
         setAddress(res.data)
+        console.log(res.data.addressId)
       })
      },[])
+
+     const handleDelete = (addressId) => {
+      AddressService.deleteAddress(addressId).then((res) => {
+        const addresses = address.filter(
+          (add) => add.addressId !== addressId
+        );
+        setAddress(addresses)
+      })
+        
+
+    };
 
 return(
     <Hero title="Your Addresses" description="">
@@ -58,7 +71,11 @@ return(
 
   
     </ul>
-
+    <input type="button"
+                        className="btn btn-secondary ms-1"
+                        value="Delete"
+                        onClick={() => handleDelete(bo.addressId)}
+                        />
     
      </div></div>
   

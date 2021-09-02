@@ -31,6 +31,7 @@ const adminLeftSide = () => {
                 <li className="list-group-item list-group-item-action">
                     <Link className="nav-link text-primary " to="/admin/address"><i className="fas fa-address-book"/> Manage Address</Link>
                 </li>
+            
                 <li className="list-group-item list-group-item-action">
                     <Link className="nav-link text-primary " to="/admin/books"><i className="fas fa-swatchbook"/> Manage Books</Link>
                 </li>
@@ -62,7 +63,7 @@ const adminRightSide = () => {
       <div className="col-lg  mb-2">
         <div className="card rounded-circle shadow">
           <div className="box p-2 rounded bg-success text-center">
-            <h1 className="fw-light text-white"> {orderCount}</h1>
+            <h1 className="fw-light text-white"> {orderCount >0?orderCount:0}</h1>
             <h6 className="text-white"> <i className="fas fa-chart-bar"></i> Total Orders</h6>
            
           </div>

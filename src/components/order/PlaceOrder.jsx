@@ -14,10 +14,11 @@ const PlaceOrder = (props) => {
 
     const history = useHistory();
     
+    const[errorMsg,setErrorMsg]=useState("")
   
     const [orderDetails,setOrderDetails] = useState({
         orderId:"",
-        quantity:"",
+        quantity:"1",
         bookId:props.match.params.bookId,
     });
 
@@ -58,17 +59,32 @@ const PlaceOrder = (props) => {
           .then((res) => {
             props.history.push("/dashboard");
           })
-          console.log(orderDetails)
+          .catch((error) => setErrorMsg("Choose your details to proceed"))
+        
       };
+
+     const errorMessage = () => 
+      {
+          return(
+              <div className="row">
+              <div className="col">
+          <div className="alert alert-danger"  style={{display:errorMsg ? "" : "none"}}>
+            <i className="fas fa-exclamation-triangle"></i> {errorMsg}
+          </div>
+          </div>
+          </div>
+  
+          )}  
        
        
     return ( <Hero title="Place Your Order"  className="container p-4"  description="Fill the details and order now">
+    
           <div className="col-lg-10 combox">
            <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
             
           <div className="row">
-          
-           <div className="col-md-4 order-md-1 mb-4">
+          {errorMessage()}
+           <div className="col-md-4 order-md-1 mt-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
             <span className="text-muted">Added Order</span>
             <span className="badge badge-secondary badge-pill">3</span>

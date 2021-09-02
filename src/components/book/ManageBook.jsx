@@ -3,6 +3,7 @@ import Base from '../Base';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { listAllBooks,deleteBook } from '../../actions/bookAction';
+import Hero from '../Hero';
 const ManageBook = () => {
 
    
@@ -23,8 +24,10 @@ const ManageBook = () => {
  
     return (  
      
-        <Base title="Manage Books"  className="container p-4"  description="Update and delete your books here">
-        <Link to="/admin" className="rounded btn btn-md btn-info">Admin Home</Link>
+        <Hero title="Manage Books"  className="container p-4"  description="Update and delete your books here">
+         <div className="col-lg-10 combox">
+           <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
+        <Link to="/admin" className="rounded btn btn-md btn-primary">Admin Home</Link>
         <div className=" mt-4 card text-dark bg-light">
            
             <div className="card-header">
@@ -65,13 +68,11 @@ const ManageBook = () => {
 
         
             </div>
-            <div className="card-footer">
-     
-            </div>
+        
             </div>
 
-
-    </Base>
+            </div></div>
+    </Hero>
     );
 }
  

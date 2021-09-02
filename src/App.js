@@ -26,6 +26,7 @@ import AddressCustomer from './components/address/addressCustomer';
 import AddBookOrder from './components/bookorder/AddBookOrder';
 
 import Hero from './components/Hero';
+import ManageBookOrder from './components/bookorder/ManageBookOrder';
 
 
 
@@ -44,12 +45,15 @@ function App() {
    <AdminRoute exact path="/admin/orderdetails/:orderDetailsId" component={UpdateOrder}/>
    <PrivateRoute exact path="/book/:bookId/order" component={PlaceOrder}/>
    <PrivateRoute exact path="/details/new" component={AddBookOrder}/>
+   <PrivateRoute exact path="/customer/address" component={YourAddresses}/>
  
 
    <PrivateRoute exact path="/dashboard" component={UserDashboard}/>
    <PrivateRoute exact path="/orderdetails/customer/:customerId" component={YourOrders}/>
    <PrivateRoute exact path="/address/add" component={AddAddress}/>
-   <PrivateRoute exact path="/customer/address" component={YourAddresses}/>
+   <PrivateRoute exact path="/customer/details" component={ManageBookOrder}/>
+
+
    <AdminRoute exact path="/admin/address" component={Address}/>
    <AdminRoute exact path="/admin/address/customer" component={AddressCustomer}/>
 
