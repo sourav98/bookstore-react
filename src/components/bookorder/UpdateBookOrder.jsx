@@ -45,9 +45,7 @@ class UpdateBookOrder extends Component {
   
   async componentDidMount()
   {
-    BookOrderService.getBookOrderById(this.props.match.params.orderId).then((res) => 
-    this.setState({bookOrder:res.data}),
-    )
+    
     console.log(this.props.match.params.orderId)
     BookOrderService.getBookOrderById(this.props.match.params.orderId).then((res) => 
     this.setState({bookOrderDto:res.data}),
@@ -71,7 +69,7 @@ class UpdateBookOrder extends Component {
     event.preventDefault();
     BookOrderService.updateBookOrder(this.props.match.params.orderId,this.state.bookOrderDto)
       .then((res) => {
-        
+        this.props.history.goBack();
       })
   };
    
