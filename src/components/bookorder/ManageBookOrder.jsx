@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Hero from '../Hero';
 import BookOrderService from '../../services/BookOrderService';
 import { Link } from 'react-router-dom';
+import UseAnimations from 'react-useanimations';
+import edit from 'react-useanimations/lib/edit';
+import search from 'react-useanimations/lib/searchToX';
 class ManageBookOrder extends Component {
     state ={
         bookOrders:[],
@@ -14,7 +17,7 @@ class ManageBookOrder extends Component {
         );
     }
 
-    handleDelete = (id) => {
+  handleDelete = (id) => {
         
         BookOrderService.deleteBookOrder(id).then((res) => {
           const bookOrders = this.state.bookOrders.filter((bo) => bo.orderId != id);
@@ -22,12 +25,12 @@ class ManageBookOrder extends Component {
         });
       };
     
-      handleSearch = (event) => {
+  handleSearch = (event) => {
         
         console.log("handleSearch");
       this.setState({ search: event.target.value });
     if(event.target.value==""){
-      const filteredBookOrders = this.state.filteredBookOrders;
+      const filteredBookOrders = this.state.bookOrders;
       this.setState({ bookOrders: filteredBookOrders });
    
     }
@@ -40,7 +43,7 @@ class ManageBookOrder extends Component {
     }
       };
 
-    render() { 
+  render() { 
         return (  
             <Hero title="Your Details" description="Update or Delete from here">
                  <div className="col-lg-9 combox">
@@ -61,7 +64,7 @@ class ManageBookOrder extends Component {
                      
                      />
                    <span className="input-group-text border-0">
-                     <i className="fas fa-search"></i>
+                   <UseAnimations animation={search} size={30} autoplay={true} loop={true} speed={0.2} /> 
        </span>
      </div>
      </div>
@@ -76,9 +79,9 @@ class ManageBookOrder extends Component {
          <tr>
          <th scope="col">Order Id</th>
          <th scope="col">Order Date</th>
-         <th scope="col">Total</th>
-         <th scope="col">Status</th>
+        
          <th scope="col">Recipient Name</th>
+         <th scope="col">Recipient Phone</th>
          <th scope="col">Payment Method</th>
          <th scope="col">Update </th>
          
@@ -90,13 +93,13 @@ class ManageBookOrder extends Component {
              <tr>
                  <td>{order.orderId}</td>
                 <td>{order.orderDate}</td>
-                <td>{order.orderTotal}</td>
-                <td>{order.status}</td>
+               
                 <td>{order.recipientName}</td>
+                <td>{order.recipientPhone}</td>
                 <td>{order.paymentMethod}</td>
                 <td> <Link to={`/bookorder/${order.orderId}`}
                    className="rounded btn btn-success">
-                   <span className="">Update</span>
+                   <span ><UseAnimations animation={edit} size={28} autoplay={true} loop={true} speed={0.5} /></span>
                  </Link></td>
          
              </tr>
