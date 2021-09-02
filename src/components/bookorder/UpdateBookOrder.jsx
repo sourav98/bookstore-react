@@ -2,55 +2,83 @@ import React, { Component }from 'react';
 import AddressService from '../../services/AddressService';
 import BookOrderService from '../../services/BookOrderService';
 import Hero from '../Hero';
-import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({
-  customer: state.customer
-});
 
-class AddBookOrder extends Component {
+
+
+class UpdateBookOrder extends Component {
   state = {
      bookOrder:{
-      orderTotal:"",
-      status:"placed",
-      addressId:"",
-      paymentMethod:"",
-      recipientName:"",
-      recipientPhone:"",
-      customerId: this.props.customer.customerId,
-    
-     } ,
-     address:[],
+        customer: {
+          customerId: 0,
+          email: "string",
+          fullName: "string",
+          
+        },
+        orderDate: "string",
+        orderId: 0,
+        orderTotal: 0,
+        paymentMethod: "string",
+        recipientName: "string",
+        recipientPhone: "string",
+        shippingAddress: {
+          address: "string",
+          addressId: 0,
+          city: "string",
+          country: "string",
+          pincode: "string"
+        },
+        status: "string"
+      },
+      bookOrderDto:{
+        orderTotal: 0,
+        status: "",
+        addressId: 0,
+        paymentMethod: "",
+        recipientName: "",
+        recipientPhone: "",
+
+
+      },
+      address:[],
     }
   
   async componentDidMount()
   {
-    AddressService.getAddresses().then((res) => 
-    this.setState({address:res.data}),
-     )
+    BookOrderService.getBookOrderById(this.props.match.params.orderId).then((res) => 
+    this.setState({bookOrder:res.data}),
+    )
+    console.log(this.props.match.params.orderId)
+    BookOrderService.getBookOrderById(this.props.match.params.orderId).then((res) => 
+    this.setState({bookOrderDto:res.data}),
+    )
+     AddressService.getAddresses().then((res) => 
+     this.setState({address:res.data}),
+      )
+    
   }
 
   handleChange = (event) => {
-    const bookOrder = { ...this.state.bookOrder };
-    bookOrder[event.target.name] = event.target.value;
+    const bookOrderDto = { ...this.state.bookOrderDto };
+    bookOrderDto[event.target.name] = event.target.value;
     console.log(event.target.name);
     console.log(event.target.value);
-    this.setState({ bookOrder: bookOrder });
+    this.setState({ bookOrderDto: bookOrderDto });
   };
 
   handleSubmit = (event) => {
     // Prevents default behaviour of submit button
     event.preventDefault();
-    BookOrderService.addBookOrder(this.state.bookOrder)
+    BookOrderService.updateBookOrder(this.props.match.params.orderId,this.state.bookOrderDto)
       .then((res) => {
-        this.props.history.goBack();
+        
       })
   };
    
 
 render(){
     return (  
-     <Hero title="Add New Details"  className="container-fluid p-5" description="Add new details here">
+     <Hero title="Add updates "  className="container-fluid p-5" description="Add updated details here">
                <div className="col-lg-9 combox">
            <div class="h-100  p-5 bg-light shadow p-3 mb-5  rounded">
          
@@ -81,7 +109,7 @@ render(){
             name="recipientName"
             className="form-control"
             placeholder="Receipient Name"
-            value={this.state.bookOrder.recipientName}
+            value={this.state.bookOrderDto.recipientName}
           />
         </div>
 
@@ -92,7 +120,7 @@ render(){
             name="recipientPhone"
             className="form-control"
             placeholder="9722749781"
-            value={this.state.bookOrder.recipientPhone}
+            value={this.state.bookOrderDto.recipientPhone}
           />
         </div>
 
@@ -121,4 +149,4 @@ render(){
     );
 }
 
-} export default connect(mapStateToProps)(AddBookOrder);
+} export default UpdateBookOrder;

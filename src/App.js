@@ -29,6 +29,7 @@ import Hero from './components/Hero';
 import ManageBookOrder from './components/bookorder/ManageBookOrder';
 import SignUp from './components/user/SignUp';
 import AddCategory from './components/category/addCategory';
+import UpdateBookOrder from './components/bookorder/UpdateBookOrder';
 
 
 
@@ -54,7 +55,7 @@ function App() {
    <PrivateRoute exact path="/orderdetails/customer/:customerId" component={YourOrders}/>
    <PrivateRoute exact path="/address/add" component={AddAddress}/>
    <PrivateRoute exact path="/customer/details" component={ManageBookOrder}/>
-
+   <PrivateRoute exact path="/bookorder/:orderId" component={UpdateBookOrder}/>
 
    <AdminRoute exact path="/admin/address" component={Address}/>
    <AdminRoute exact path="/admin/address/customer" component={AddressCustomer}/>
