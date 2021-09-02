@@ -28,12 +28,12 @@ const Nav = ({history}) => {
             <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
           </li>
 
-          {customer.loggedIn && !customer.admin ?(
+        
           <li className="nav-item">
             <NavLink className="nav-link"to="/books">Books</NavLink >
-          </li>):<div>
+          </li><div>
               </div>
-            }
+            
 
           {customer.loggedIn && !customer.admin ?(
            <li className="nav-item">

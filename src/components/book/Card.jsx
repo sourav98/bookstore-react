@@ -15,12 +15,19 @@ const Card = (props) => {
             <p className="card-text">{props.book.description}</p>
 
             <h5 className="mb-3"><span className="text-danger mr-1">₹ {props.book.price}</span></h5>
+            <div className="row">
+            
+            <div className="col-8">
             <Link  to={`/book/${props.book.bookId}/order`} className="btn btn-warning form-control">
             Buy Now
-            </Link>  
-            <Link  to={`/review/book/${props.book.bookId}`} className="btn btn-warning form-control">
+            </Link>
+            </div>
+
+            <div className="col-4">
+            <Link  to={`/review/book/${props.book.bookId}`} className="btn btn-outline-dark form-control">
             View More
-            </Link>  
+            </Link></div>
+             </div>
             </div>
             <div className="card-footer">
       <div className="row">
