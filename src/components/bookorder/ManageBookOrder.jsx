@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import UseAnimations from 'react-useanimations';
 import edit from 'react-useanimations/lib/edit';
 import search from 'react-useanimations/lib/searchToX';
+import trash2 from 'react-useanimations/lib/trash2'
 class ManageBookOrder extends Component {
     state ={
         bookOrders:[],
@@ -63,9 +64,9 @@ class ManageBookOrder extends Component {
                    onChange={this.handleSearch}
                      
                      />
-                   <span className="input-group-text border-0">
-                   <UseAnimations animation={search} size={30} autoplay={true} loop={true} speed={0.2} /> 
-       </span>
+                   <button className="input-group-text border-0">
+                   <UseAnimations animation={search} size={30}  /> 
+       </button>
      </div>
      </div>
                   </div>
@@ -84,7 +85,7 @@ class ManageBookOrder extends Component {
          <th scope="col">Recipient Phone</th>
          <th scope="col">Payment Method</th>
          <th scope="col">Update </th>
-         
+         <th scope="col">Delete </th>
          </tr>
          </thead>
          <tbody>
@@ -98,11 +99,17 @@ class ManageBookOrder extends Component {
                 <td>{order.recipientPhone}</td>
                 <td>{order.paymentMethod}</td>
                 <td> <Link to={`/bookorder/${order.orderId}`}
-                   className="rounded btn btn-success">
-                   <span ><UseAnimations animation={edit} size={28} autoplay={true} loop={true} speed={0.5} /></span>
+                   > <button
+                   className="rounded btn btn-primary">
+                   <UseAnimations animation={edit} size={28} autoplay={true} loop={true} speed={0.4} /></button>
                  </Link></td>
          
-             </tr>
+             <td>
+              <button
+              className="rounded btn btn-danger"
+              onClick={() => this.props.handleDelete(order.orderId)}
+            ><UseAnimations animation={trash2} size={28}   /></button></td>
+            </tr>
      
      ))}
      
